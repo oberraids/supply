@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <p id="total-supply"></p>
+    <script>
+      const api_key = 'Z7YVSZDNJKXEVTQVAPGF44P6ECN6HJNB3S';
+      const contract_address = '0x97e3b78E37e86458724DE605C98A064763FF798C';
+      const url = `https://api.bscscan.com/api?module=stats&action=tokensupply&contractaddress=${contract_address}&apikey=${api_key}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const totalSupply = data.result;
+          document.getElementById('total-supply').textContent = `${totalSupply}`;
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    </script>
+  </body>
+</html>
